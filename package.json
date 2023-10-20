@@ -5,15 +5,23 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "tsc && vite build",
+    "build": "tsc && bun build-css && vite build",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "build-css": "sass --load-path=node_modules src:dist --style=compressed",
+    "watch-css": "bun build-css && sass --load-path=node_modules -w src:dist --style=compressed",
+    "start": "bun build-css & bun dev"
   },
   "dependencies": {
+    "pluralize": "^8.0.0",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "react-query": "^3.39.3",
+    "sass": "^1.69.3",
+    "vanilla-framework": "^4.5.0"
   },
   "devDependencies": {
+    "@types/pluralize": "^0.0.32",
     "@types/react": "^18.2.15",
     "@types/react-dom": "^18.2.7",
     "@typescript-eslint/eslint-plugin": "^6.0.0",
